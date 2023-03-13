@@ -9,7 +9,7 @@ class PasswordGenerator {
     private static final String spcl_char="~!@#$%^&*(_+{}|:_[?]>=<";
     private static final String store = capital + small + numeric + spcl_char;
 
-    public void generatePassword(int length) {
+    public void generatePass(int length) {
         StringBuilder password = new StringBuilder();
         for (int i = 0; i < length ; i++) {
             int index = random.nextInt(store.length());
@@ -25,7 +25,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the digit for generating password : ");
         int len = in.nextInt();
-        obj.generatePassword(len);
+        obj.generatePass(len);
         in.close();
     }
 }
