@@ -6,7 +6,7 @@ This is a project which is built using java language where you can generate a Pa
 
 
 # Features 
-   - Generate Password
+   -  Generate Password
 
    -  Store Password
 
@@ -23,10 +23,14 @@ This is a project which is built using java language where you can generate a Pa
 
 > "java.util.Random" - This module will help in randomly generate password.
 
+> "java.util.HashMap" - This module is a built-in data structure that provides a way to store and access elements in a key-value pair format.
+
+> "javax.swing" - THis is a Java package that provides classes and interfaces for building graphical user interfaces (GUIs).
+
 
 ## Tech Stack
 
-We will use a data structure to store the passwords and similarly access from it.
+We will use a Hash data structure to store the passwords and similarly access from it.
 
 # Contributer
 
