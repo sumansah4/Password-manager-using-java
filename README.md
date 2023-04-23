@@ -23,8 +23,6 @@ This is a project which is built using java language where you can generate a Pa
 
 > "java.util.Random" - This module will help in randomly generate password.
 
-> "java.util.ArrayList" - This module will help in storing and manipulating a dynamic list of object.
-
 
 ## Tech Stack
 
