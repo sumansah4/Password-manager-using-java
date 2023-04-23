@@ -1,7 +1,7 @@
 
 # Password Manager Using java
 
-This is a project which is built using java language where you can generate a Password for you but we added some more additional features like - Store Password, Search password , Delete password.
+This is a project which is built using java language where you can generate a Password for you also we added some extra additional features like - Store Password, Search password , Delete password.
 
 
 
@@ -34,6 +34,6 @@ We will use a Hash data structure to store the passwords and similarly access fr
 
 # Contributer
 
+@Saurabh_Kumar
 @Suman_Kumari 
 @Tanveer_Singh
-@Saurabh_Kumar
