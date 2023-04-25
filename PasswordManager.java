@@ -84,7 +84,7 @@ class PasswordManager implements ActionListener {
     public void GUIButtonsSetting(JButton btn) {
         btn.setBackground(new Color(0xDAB5A5));
         btn.setForeground(Color.DARK_GRAY); 
-        btn.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
+        btn.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
         btn.setFocusable(false);
         Font fn = new Font("Roboto", Font.BOLD, 16);
         btn.setFont(fn);
