@@ -1,7 +1,7 @@
 
-# Password Manager Using java
+# Password Manager in Java
 
-This is a project which is built using java language where you can generate a Password for you also we added some extra additional features like - Store Password, Search password , Delete password.
+This is a project which is built using java lanaguage. In this project you can generate a Password for you also we added some extra additional features like - Store Password, Search password , Delete password.
 
 
 
@@ -30,7 +30,7 @@ This is a project which is built using java language where you can generate a Pa
 
 ## Tech Stack
 
-We will use a Hash data structure to store the passwords and similarly access from it.
+We will use the Hash Map to store the passwords and similarly access from it.
 
 # Contributer
 
