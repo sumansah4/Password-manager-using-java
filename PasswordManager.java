@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.HashMap;
 
+
+// Using inbuilt hashMap to store account and password.
 class HashtablePassword {
     private final HashMap<Object, Object> map; 
     private final float loadFactor; 
@@ -28,6 +30,7 @@ class HashtablePassword {
     }
 }
 
+// Generating Random password and using stringBuilder to concatenate the password string.
 class PasswordGenerator {
     private static final Random random = new Random();
     private static final String caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -44,7 +47,6 @@ class PasswordGenerator {
         }
         return password.toString();
     }
-
 }
 
 class PasswordManager implements ActionListener {
@@ -60,7 +62,6 @@ class PasswordManager implements ActionListener {
     JTextArea genePassArea, searchPassArea; 
     JButton PassGeneBtn, PassStoreBtn, PassSearchBtn, AccAddBtn, PassDeleteBtn; 
     JTextField tAcc, tPass; 
-    JFrame conn3;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -89,7 +90,7 @@ class PasswordManager implements ActionListener {
         btn.setFont(fn);
     }
 
-    /****** Inner GUI of Store Password ******/
+    /****** Inner GUI of STORE PASSWORD, this will execute when we click on that button ******/
     public void StoringGUI() {
         frame2 = new JFrame("Store Password Here");
         frame2.setBounds(1400, 300, 800, 500);
@@ -135,7 +136,7 @@ class PasswordManager implements ActionListener {
         GUIButtonsSetting(AccAddBtn);
     }
 
-    // for password generator
+    // This text area will be used by password generator and search password result. 
     public void textArea(String Pass, JTextArea TA) {
         TA.setText(Pass);
         Font fn = new Font("Roboto", Font.BOLD, 20);
@@ -170,17 +171,21 @@ class PasswordManager implements ActionListener {
 
         // Generate Password action
         PassGeneBtn.addActionListener(e -> {
-            if (PassGeneBtn == e.getSource()) 
+            if (PassGeneBtn == e.getSource()) // check if the button and listener source is same. 
             {
                 try {
                     int len = Integer.parseInt(JOptionPane.showInputDialog("Enter the password length"));
-                    if (len > 8) {
+                    if (len >= 8) {
                         PasswordGenerator pass = new PasswordGenerator();
                         String passwd = pass.generatePassword(len);
                         genePassArea = new JTextArea(5, 4);
                         textArea(passwd, genePassArea);
                         JOptionPane.showMessageDialog(conn1, genePassArea);
-                    } else
+                    }
+                    else if( len <= 0){
+                        JOptionPane.showMessageDialog(conn1, "Can't take input value as 0 or -ve ");
+                    }
+                    else
                         JOptionPane.showMessageDialog(conn1, "Small passwords are not so secure!");
 
                 } catch (Exception ex) {
@@ -199,9 +204,9 @@ class PasswordManager implements ActionListener {
 
         // Store Password action
         PassStoreBtn.addActionListener(e -> {
-            if (PassStoreBtn == e.getSource()) { // check if button just clicked is PassStoreBtn button, using getSource() method.
-                StoringGUI();
-                // action on the Store btn
+            if (PassStoreBtn == e.getSource()) {
+                StoringGUI(); // Inner GUI of STORE PASSWORD
+                // action when user clicks on the STORE btn
                 AccAddBtn.addActionListener(e4 -> {
                     try {
                         if (AccAddBtn == e4.getSource()) {
@@ -210,14 +215,14 @@ class PasswordManager implements ActionListener {
                             if (!account_name.isEmpty() && !acc_pass.isEmpty()) {
                                 data.add_Acc(account_name, acc_pass);
                                 JOptionPane.showMessageDialog(conn2, "Account is added !");
-                                tAcc.setText(null);
+                                tAcc.setText(null); // set the textField to NULL so we don't have to explicitly backspace it.
                                 tPass.setText(null);
                             } else {
                                 throw new Exception("Input Missing");
                             }
                         }
                     } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(conn2, ex.getMessage());
+                        JOptionPane.showMessageDialog(conn2, ex.getMessage()); // catching the exception message, the one we have explicitly thrown.
                     }
                 });
             }
@@ -238,10 +243,10 @@ class PasswordManager implements ActionListener {
                     String acc_name = JOptionPane.showInputDialog("Enter your Account Name"); 
                     if (!acc_name.isBlank()) { 
                         Object pass = data.get_Acc(acc_name.toLowerCase()); 
-                        if (pass != null) { 
+                        if (pass != null) { // password could be a NULL value so check
                             searchPassArea = new JTextArea(4, 5); 
                             textArea(String.valueOf(pass), searchPassArea); 
-                            JOptionPane.showMessageDialog(conn1,searchPassArea, "Password Foun",  JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(conn1,searchPassArea, "Password Found",  JOptionPane.INFORMATION_MESSAGE);
                         } else
                             JOptionPane.showMessageDialog(conn1, "Account not Found!");
                     }
@@ -269,7 +274,7 @@ class PasswordManager implements ActionListener {
                     String acc_name = JOptionPane.showInputDialog("Enter the Account Name"); 
                     if (!acc_name.isBlank()) {
                         Object find = data.get_Acc(acc_name.toLowerCase()); 
-                        if(find != null){
+                        if(find != null){ // account could be a NULL value so check.
                             data.remove_Acc(acc_name.toLowerCase()); 
                             JOptionPane.showMessageDialog(conn1, "Delete successfully!"); 
                         }
@@ -289,7 +294,7 @@ class PasswordManager implements ActionListener {
         try {
             new PasswordManager();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "An error occurred: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "An error occurred");
         }
     }
 }
